@@ -2,7 +2,7 @@ from enum import Enum
 from htmlnode import LeafNode
 
 class TextType(Enum):
-    TEXT_PLAIN = "text"
+    PLAIN_TEXT = "text"
     BOLD_TEXT = "bold"
     ITALIC_TEXT = "italic"
     CODE_TEXT = "code"
@@ -26,7 +26,7 @@ def text_node_to_html_node(text_node):
     
     match text_node.text_type:
 
-        case TextType.TEXT_PLAIN:
+        case TextType.PLAIN_TEXT:
             return LeafNode(None, text_node.text)
     
         case TextType.BOLD_TEXT:
