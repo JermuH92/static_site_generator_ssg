@@ -5,6 +5,7 @@ from inline_markdown import (
     split_nodes_link,
     extract_markdown_links,
     extract_markdown_images,
+    text_to_textnodes,
 )
 from textnode import TextNode, TextType
 
@@ -246,6 +247,54 @@ class TestSplitNodesLink(unittest.TestCase):
         ],
         new_nodes,
     )
+
+########### SPLIT_NODES_LINK CLASS ENDS HERE ###########
+
+########### TEXT_TO_TEXT_NODES CLASS STARTS HERE ###########
+
+class TestTextToNodes(unittest.TestCase):
+
+    def test_text_to_nodes_with_all(self):
+        matches = text_to_textnodes(
+            "This text has **bold** elements, _italic_ elements, a `code block`, a link [to boot dev](https://www.boot.dev) and an image ![cat image](https://notarealsite/cat.png)")
+        self.assertListEqual(
+        [
+            TextNode("This text has ", TextType.PLAIN_TEXT),
+            TextNode("bold", TextType.BOLD_TEXT),
+            TextNode(" elements, ", TextType.PLAIN_TEXT),
+            TextNode("italic", TextType.ITALIC_TEXT),
+            TextNode(" elements, a ", TextType.PLAIN_TEXT),
+            TextNode("code block", TextType.CODE_TEXT),
+            TextNode(", a link ", TextType.PLAIN_TEXT),
+            TextNode("to boot dev", TextType.LINK_TEXT, "https://www.boot.dev"),
+            TextNode(" and an image ", TextType.PLAIN_TEXT),
+            TextNode("cat image", TextType.IMAGE_TEXT, "https://notarealsite/cat.png")
+        ],
+        matches
+    )
+        
+    def test_text_to_node_plain_text(self):
+        plain_text = "This text has no markdown elements and it should come out of the function as a singular plain text node."
+        new_node = text_to_textnodes(plain_text)
+        self.assertListEqual(
+        [
+            TextNode("This text has no markdown elements and it should come out of the function as a singular plain text node.", TextType.PLAIN_TEXT) 
+        ],
+        new_node
+    )
+    
+    def test_text_to_node_raises(self):
+        text = "This text has erroneus non-closed **bold element."
+        with self.assertRaises(Exception) as context:
+            text_to_textnodes(text)
+        
+        self.assertEqual (
+            str(context.exception),
+            "Error: Delimiter is not matched or is not valid Markdown syntax."
+        )
+
+
+########### TEXT_TO_TEXT_NODES CLASS ENDS HERE ###########
 
 ########### REGEX EXTRACTION CLASS STARTS HERE ###########
 
