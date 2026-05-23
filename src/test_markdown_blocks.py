@@ -3,7 +3,8 @@ import textwrap
 from markdown_blocks import (
     markdown_to_blocks,
     block_to_block_type,
-    markdown_to_html_node   
+    markdown_to_html_node,
+    extract_title   
 )
 from markdown_blocks import BlockType
 
@@ -244,3 +245,20 @@ class TestMarkdownToHTMLNode(unittest.TestCase):
         html,
         "<div><p>This is <b>bolded</b> paragraph text in a p tag here</p><p>This is another paragraph with <i>italic</i> text and <code>code</code> here</p></div>",
     )
+
+class TestExtractTitle(unittest.TestCase):
+    
+    def test_missing_title_raises(self):
+        md = " This heading is missing its h1 heading."
+        with self.assertRaises(ValueError) as context:
+            extract_title(md)
+        
+        self.assertEqual(
+            str(context.exception),
+            "No h1-sized header found in markdown file"
+        )
+    
+    def test_extract_title(self):
+        md = "# Hello World"
+        title = extract_title(md)
+        self.assertEqual(title, "Hello World")

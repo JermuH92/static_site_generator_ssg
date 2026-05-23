@@ -61,6 +61,16 @@ def text_to_children(text):
     return [text_node_to_html_node(node) for node in nodes]
 
 
+def extract_title(markdown):
+    lines = markdown.split("\n")
+
+    for line in lines:
+        if line.startswith("# "):
+            return line[2:].strip()
+        
+    raise ValueError("No h1-sized header found in markdown file")
+
+
 def heading_to_html_node(block):
     heading_level = 0
     for char in block:
