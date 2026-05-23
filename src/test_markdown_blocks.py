@@ -2,7 +2,8 @@ import unittest
 import textwrap
 from markdown_blocks import (
     markdown_to_blocks,
-    block_to_block_type,   
+    block_to_block_type,
+    markdown_to_html_node   
 )
 from markdown_blocks import BlockType
 
@@ -154,3 +155,92 @@ class TestBlockToBlockType(unittest.TestCase):
             1. One
             3. Three""")
         self.assertEqual(block_to_block_type(skipping_o_list), BlockType.PARAGRAPH)
+    
+
+class TestMarkdownToHTMLNode(unittest.TestCase):
+
+    def test_mixed_content(self):
+        md = textwrap.dedent("""\
+            # A heading
+
+            This is a paragraph with **bold** text
+            spanning two lines.
+
+            - list item one
+            - list item two
+
+        """)
+        
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(html,
+             "<div><h1>A heading</h1><p>This is a paragraph with <b>bold</b> text spanning two lines.</p><ul><li>list item one</li><li>list item two</li></ul></div>")
+
+
+    def test_heading(self):
+        md = textwrap.dedent("""\
+            ### This is a size 3 heading
+        """)
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(html, "<div><h3>This is a size 3 heading</h3></div>")
+
+    def test_codeblock(self):
+        md = textwrap.dedent("""\
+            ```
+            This is text that _should_ remain
+            the **same** even with inline stuff
+            ```
+        """)
+        
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+            html,
+            "<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff\n</code></pre></div>",
+        )
+    
+    def test_quotes(self):
+        md = textwrap.dedent("""\
+            > This is a quote\n> with two lines.
+        """)
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(html, "<div><blockquote>This is a quote with two lines.</blockquote></div>")
+    
+    def test_quotes_inline_parsing(self):
+        md = "> A quote with **bold** and _italic_ text"
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(html, "<div><blockquote>A quote with <b>bold</b> and <i>italic</i> text</blockquote></div>")
+    
+    def test_ordered_lists(self):
+        md = textwrap.dedent("""\
+            1. List item one
+            2. List item two
+            3. List item three
+            4. List item four
+
+        """)
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(html, "<div><ol><li>List item one</li><li>List item two</li><li>List item three</li><li>List item four</li></ol></div>")
+
+    def test_paragraphs(self):
+        md = textwrap.dedent("""\
+            This is **bolded** paragraph
+            text in a p
+            tag here
+
+            This is another paragraph with _italic_ text and `code` here
+
+        """)
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+        html,
+        "<div><p>This is <b>bolded</b> paragraph text in a p tag here</p><p>This is another paragraph with <i>italic</i> text and <code>code</code> here</p></div>",
+    )
