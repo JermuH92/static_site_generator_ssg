@@ -203,7 +203,7 @@ class TestMarkdownToHTMLNode(unittest.TestCase):
     
     def test_quotes(self):
         md = textwrap.dedent("""\
-            > This is a quote\n> with two lines.
+            >This is a quote\n> with two lines.
         """)
 
         node = markdown_to_html_node(md)
@@ -211,7 +211,7 @@ class TestMarkdownToHTMLNode(unittest.TestCase):
         self.assertEqual(html, "<div><blockquote>This is a quote with two lines.</blockquote></div>")
     
     def test_quotes_inline_parsing(self):
-        md = "> A quote with **bold** and _italic_ text"
+        md = ">A quote with **bold** and _italic_ text"
         node = markdown_to_html_node(md)
         html = node.to_html()
         self.assertEqual(html, "<div><blockquote>A quote with <b>bold</b> and <i>italic</i> text</blockquote></div>")
