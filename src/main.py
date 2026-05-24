@@ -1,6 +1,6 @@
 import os
 import shutil
-from page_generator import generate_page
+from page_generator import generate_pages_recursive
 
 
 def copy_static_recursive(source_path, destination_path):
@@ -22,6 +22,7 @@ def copy_static_recursive(source_path, destination_path):
 
             copy_static_recursive(full_source_path, full_destination_path)
 
+
 def main():
 
     source_dir = "static"
@@ -38,7 +39,7 @@ def main():
     print("Copying complete.")
 
     print("Generating pages...")
-    generate_page("content/index.md", "template.html", "public/index.html")
+    generate_pages_recursive("content", "template.html", "public")
     
 
 if __name__ == "__main__":
