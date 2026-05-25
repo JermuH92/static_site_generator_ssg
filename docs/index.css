@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
 body {
-  background-color: #1f1c25;
-  color: #f0e6d1;
-  font-family: "Luminari", "Georgia", serif;
+  background-color: #000000;
+  color: #d1f0ef;
+  font-family: "Mona Sans", sans-serif;
   line-height: 1.7;
   margin: 0;
   padding: 20px;
@@ -20,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #dda15e;
+  color: #d9ecff;
   margin-top: 24px;
   margin-bottom: 16px;
   text-shadow: 2px 2px 4px #000;
@@ -45,14 +47,14 @@ h6 {
 }
 
 a {
-  color: #e0a96d;
+  color: #d9ecff;
   text-decoration: none;
-  border-bottom: 2px solid #e0a96d;
+  border-bottom: 2px solid #d9ecff;
 }
 
 a:hover {
-  color: #f4a261;
-  border-color: #f4a261;
+  color: #67d3eb;
+  border-color: #67d3eb;
 }
 
 ul,
@@ -63,9 +65,9 @@ ol {
 code {
   background-color: #3c3c42;
   border-radius: 6px;
-  color: #e9c46a;
+  color: #80dbeb;
   padding: 0.4em 0.6em;
-  font-family: "Courier New", monospace;
+  font-family: "Mona Sans", monospace;
 }
 
 pre code {
