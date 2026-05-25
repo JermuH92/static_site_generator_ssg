@@ -1,46 +1,35 @@
-# Tolkien Fan Club
+# Developer Blog - Jere Kukkohovi
 
-![JRR Tolkien sitting](/images/tolkien.png)
+![Picture of a retro PC setup](/images/blogheader.png)
 
-Here's the deal, **I like Tolkien**.
+Welcome to my blogs landing page. Here you'll find most of my struggles and wins on becoming a fully-fledged software engineer, in this uncertain and increasingly AI-driven world.
 
-> "I am in fact a Hobbit in all but size."
->
-> -- J.R.R. Tolkien
 
-## Blog posts
+## Have a look at my most recent blog posts
 
-- [Why Glorfindel is More Impressive than Legolas](/blog/glorfindel)
-- [Why Tom Bombadil Was a Mistake](/blog/tom)
-- [The Unparalleled Majesty of "The Lord of the Rings"](/blog/majesty)
+- [The Making of my Custom SSG](/blog/building_ssg)
+- [Placeholder](/blog/tom)
+- [Placeholder](/blog/majesty)
 
-## Reasons I like Tolkien
+## My Current Tech Stack
 
-- You can spend years studying the legendarium and still not understand its depths
-- It can be enjoyed by children and adults alike
-- Disney _didn't ruin it_ (okay, but Amazon might have)
-- It created an entirely new genre of fantasy
+- Python
+- Javascript and TypeScript
+- Vite React
+- Three.js
 
-## My favorite characters (in order)
+## My most immediate aspirations
 
-1. Gandalf
-2. Bilbo
-3. Sam
-4. Glorfindel
-5. Galadriel
-6. Elrond
-7. Thorin
-8. Sauron
-9. Aragorn
+1. Have 60 self-made projects done by the end of 2026 (Some AI assisted, some not)
+2. Complete the Boot.dev learning path (Including guided projects, unguided portfolio projects and the capstone project)
+3. Learn the advanced courses on Boot.dev
+4. Find a programming job
+5. Finish gateway studies so I can be admitted into remote IT Engineer studies 
+6. Complete Helsinki Python Programming mooc. (Using it as learning reinforcer to keep concepts fresh)
+7. Launch fully self-made high-end application by the end of 2027
 
-Here's what `elflang` looks like (the perfect coding language):
-
-```
-func main(){
-    fmt.Println("Aiya, Ambar!")
-}
-```
 
 Want to get in touch? [Contact me here](/contact).
+
 
 This site was generated with a custom-built [static site generator](https://www.boot.dev/courses/build-static-site-generator-python) from the course on [Boot.dev](https://www.boot.dev).
