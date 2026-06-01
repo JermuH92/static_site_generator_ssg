@@ -53,13 +53,13 @@ First up was a tight TypeScript compilation error: the generated `JSX.IntrinsicE
 Next, TypeScript refused to trust the GLTF hook's return value, so I had to use a override: force-casting the asset layout via `as unknown as GLTFResult`.
 
 Then came the final, most confusing error in the browser console:
-`Unexpected token '<', "<!doctype "... is not valid JSON`
+`Unexpected token '&lt;', "&lt;!doctype "... is not valid JSON`
 
 The browser was looking for the model in the wrong folder path. Instead of finding the binary 3D data, Vite used the default `index.html` 404 page. When the GLTF loader tried to parse a standard HTML document as 3D data, it blew up. Fixing the pathing for useGLTF was enough to fix the issue.
 
 ## The Branch is Alive!
 
-With some `<ambientLight />`, an `<Environment preset="forest" />` for global illumination, and `<OrbitControls />` dropped into the `<Canvas>`, the tree finally popped up on the screen.
+With some `&lt;ambientLight /&gt;`, an `&lt;Environment preset="forest" /&gt;` for global illumination, and `&lt;OrbitControls /&gt;` dropped into the `&lt;Canvas&gt;`, the tree finally popped up on the screen.
 
 ![Completed pine tree rendering on a blank white canvas with browser devtools console open](/images/day1_final.png)
 
