@@ -8,7 +8,7 @@ Welcome to my blogs landing page. Here you'll find most of my struggles and wins
 ## Have a look at my most recent blog posts
 
 - [The Making of my Custom SSG](/blog/building_ssg)
-- [Placeholder](/blog/tom)
+- [DevLog 001 - June 1st, 2026](/blog/lsi_dev_blog_001)
 - [Placeholder](/blog/majesty)
 
 ## My Current Tech Stack

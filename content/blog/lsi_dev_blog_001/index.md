@@ -1,5 +1,7 @@
 # DevLog 001: Planting the First Seed of Lakeside Interactive Studios
 
+[< Back Home](/)
+
 `June 1st, 2026 - Author: Jere Kukkohovi`
 
 Today, I started experimenting more with 3D Web Development by finally deciding to take a step towards the goal on building a visually stunning and technically demanding homepage and asset playground for my upcoming game studio - _Lakeside Interactive Nordic_. 
@@ -68,3 +70,5 @@ Next up: figuring out how to duplicate this instance into a massive forest and l
 **Until next time.**
 
 **Jere Kukkohovi**
+
+[< Back Home](/)
